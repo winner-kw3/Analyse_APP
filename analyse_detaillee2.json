@@ -1,0 +1,167 @@
+{
+    "172.17.8.109": {
+        "malicious": 0,
+        "protocols": [
+            "BROWSER",
+            "DHCP",
+            "DNS",
+            "KERBEROS",
+            "SMB",
+            "HTTP",
+            "TLS",
+            "LSARPC",
+            "CLDAP",
+            "DRSUAPI",
+            "IGMP",
+            "DATA",
+            "LLMNR",
+            "DATA-TEXT-LINES",
+            "SMB2",
+            "DCERPC",
+            "RPC_NETLOGON",
+            "NBNS",
+            "EPM",
+            "LDAP",
+            "TCP",
+            "NTP",
+            "SSDP"
+        ],
+        "connections": [
+            "224.0.0.22",
+            "204.2.193.184",
+            "216.239.94.252",
+            "192.241.220.183",
+            "23.50.224.8",
+            "172.17.8.2",
+            "224.0.0.252",
+            "255.255.255.255",
+            "91.121.30.169",
+            "239.255.255.250",
+            "172.17.8.255"
+        ]
+    },
+    "172.17.8.255": {
+        "malicious": 0,
+        "protocols": [
+            "BROWSER",
+            "NBNS"
+        ],
+        "connections": [
+            "172.17.8.109"
+        ]
+    },
+    "172.17.8.2": {
+        "malicious": 0,
+        "protocols": [
+            "BROWSER",
+            "DATA",
+            "DHCP",
+            "SMB2",
+            "DCERPC",
+            "CLDAP",
+            "DRSUAPI",
+            "DNS",
+            "EPM",
+            "KERBEROS",
+            "TCP",
+            "SMB",
+            "LDAP",
+            "RPC_NETLOGON",
+            "NTP",
+            "NBNS",
+            "LSARPC"
+        ],
+        "connections": [
+            "172.17.8.109"
+        ]
+    },
+    "224.0.0.22": {
+        "malicious": 0,
+        "protocols": [
+            "IGMP"
+        ],
+        "connections": [
+            "172.17.8.109"
+        ]
+    },
+    "224.0.0.252": {
+        "malicious": 0,
+        "protocols": [
+            "LLMNR"
+        ],
+        "connections": [
+            "172.17.8.109"
+        ]
+    },
+    "255.255.255.255": {
+        "malicious": 0,
+        "protocols": [
+            "DHCP"
+        ],
+        "connections": [
+            "172.17.8.109"
+        ]
+    },
+    "23.50.224.8": {
+        "malicious": 0,
+        "protocols": [
+            "HTTP",
+            "TCP",
+            "DATA-TEXT-LINES"
+        ],
+        "connections": [
+            "172.17.8.109"
+        ]
+    },
+    "239.255.255.250": {
+        "malicious": 1,
+        "protocols": [
+            "SSDP"
+        ],
+        "connections": [
+            "172.17.8.109"
+        ]
+    },
+    "91.121.30.169": {
+        "malicious": 1,
+        "protocols": [
+            "HTTP",
+            "DATA",
+            "TCP"
+        ],
+        "connections": [
+            "172.17.8.109"
+        ]
+    },
+    "192.241.220.183": {
+        "malicious": 13,
+        "protocols": [
+            "TLS",
+            "TCP"
+        ],
+        "connections": [
+            "172.17.8.109"
+        ]
+    },
+    "204.2.193.184": {
+        "malicious": 0,
+        "protocols": [
+            "HTTP",
+            "TCP"
+        ],
+        "connections": [
+            "172.17.8.109"
+        ]
+    },
+    "216.239.94.252": {
+        "malicious": 0,
+        "protocols": [
+            "TLS",
+            "DATA",
+            "TCP"
+        ],
+        "connections": [
+            "172.17.8.109"
+        ]
+    }
+}
