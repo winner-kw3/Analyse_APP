@@ -2,12 +2,17 @@ import pyshark
 import json
 import time
 import requests
+from dotenv import load_dotenv
+import os
 from collections import defaultdict
 
+load_dotenv()
+
 # Configuration
+
 PCAP_FILE = 'ex4.pcap'
 OUTPUT_JSON = 'main.json'
-VIRUSTOTAL_API_KEY = '359d69015296d4b7a8078ee325390f22062e18987fd53979a4875cc72d036ca8'
+VIRUSTOTAL_API_KEY = os.getenv('VIRUSTOTAL_API_KEY')
 VT_API_URL = 'https://www.virustotal.com/api/v3/ip_addresses/'
 REQUEST_DELAY = 15  # Respect de la limite de 4 requêtes/minute
 THRESHOLD = 5  # Seuil d'activité suspecte ajusté
