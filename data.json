@@ -1,0 +1,196 @@
+{
+    "total_ips_analyzed": 11,
+    "suspect_ips": [
+        "172.17.8.109",
+        "172.17.8.255",
+        "172.17.8.2",
+        "224.0.0.22",
+        "224.0.0.252",
+        "23.50.224.8",
+        "239.255.255.250",
+        "91.121.30.169",
+        "192.241.220.183",
+        "204.2.193.184",
+        "216.239.94.252"
+    ],
+    "analysis_results": [
+        {
+            "ip": "172.17.8.109",
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 31,
+                "harmless": 63,
+                "timeout": 0
+            },
+            "reputation": 0,
+            "last_analysis_date": 1743422206,
+            "country": "Unknown",
+            "as_owner": "Unknown",
+            "tags": [
+                "private"
+            ]
+        },
+        {
+            "ip": "172.17.8.255",
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 32,
+                "harmless": 62,
+                "timeout": 0
+            },
+            "reputation": 0,
+            "last_analysis_date": 1662795849,
+            "country": "Unknown",
+            "as_owner": "Unknown",
+            "tags": [
+                "private"
+            ]
+        },
+        {
+            "ip": "172.17.8.2",
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 32,
+                "harmless": 62,
+                "timeout": 0
+            },
+            "reputation": 0,
+            "last_analysis_date": 1737571479,
+            "country": "Unknown",
+            "as_owner": "Unknown",
+            "tags": [
+                "private"
+            ]
+        },
+        {
+            "ip": "224.0.0.22",
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 33,
+                "harmless": 61,
+                "timeout": 0
+            },
+            "reputation": -41,
+            "last_analysis_date": 1743426910,
+            "country": "Unknown",
+            "as_owner": "Unknown",
+            "tags": [
+                "multicast"
+            ]
+        },
+        {
+            "ip": "224.0.0.252",
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 32,
+                "harmless": 62,
+                "timeout": 0
+            },
+            "reputation": -51,
+            "last_analysis_date": 1743394663,
+            "country": "Unknown",
+            "as_owner": "Unknown",
+            "tags": [
+                "suspicious-udp",
+                "multicast"
+            ]
+        },
+        {
+            "ip": "23.50.224.8",
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 94,
+                "harmless": 0,
+                "timeout": 0
+            },
+            "reputation": 0,
+            "last_analysis_date": 1743423326,
+            "country": "US",
+            "as_owner": "Akamai International B.V.",
+            "tags": []
+        },
+        {
+            "ip": "239.255.255.250",
+            "last_analysis_stats": {
+                "malicious": 1,
+                "suspicious": 0,
+                "undetected": 32,
+                "harmless": 61,
+                "timeout": 0
+            },
+            "reputation": -145,
+            "last_analysis_date": 1743426017,
+            "country": "Unknown",
+            "as_owner": "Unknown",
+            "tags": [
+                "multicast"
+            ]
+        },
+        {
+            "ip": "91.121.30.169",
+            "last_analysis_stats": {
+                "malicious": 1,
+                "suspicious": 2,
+                "undetected": 32,
+                "harmless": 59,
+                "timeout": 0
+            },
+            "reputation": 0,
+            "last_analysis_date": 1743423326,
+            "country": "FR",
+            "as_owner": "OVH SAS",
+            "tags": []
+        },
+        {
+            "ip": "192.241.220.183",
+            "last_analysis_stats": {
+                "malicious": 13,
+                "suspicious": 0,
+                "undetected": 30,
+                "harmless": 51,
+                "timeout": 0
+            },
+            "reputation": -4,
+            "last_analysis_date": 1743425689,
+            "country": "US",
+            "as_owner": "DIGITALOCEAN-ASN",
+            "tags": []
+        },
+        {
+            "ip": "204.2.193.184",
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 94,
+                "harmless": 0,
+                "timeout": 0
+            },
+            "reputation": 0,
+            "last_analysis_date": 1743423326,
+            "country": "US",
+            "as_owner": "NTT-DATA-2914",
+            "tags": []
+        },
+        {
+            "ip": "216.239.94.252",
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 32,
+                "harmless": 62,
+                "timeout": 0
+            },
+            "reputation": 0,
+            "last_analysis_date": 1743423326,
+            "country": "CA",
+            "as_owner": "CONCORDE",
+            "tags": []
+        }
+    ]
+}
