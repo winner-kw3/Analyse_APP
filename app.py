@@ -12,12 +12,13 @@ load_dotenv()
 # Configuration
 PCAP_API_URL = "http://93.127.203.48:5000/pcap/latest"  # URL de l'API
 LOCAL_PCAP_FILE = "logs.pcap"
-OUTPUT_JSON = 'main.json'
 VIRUSTOTAL_API_KEY = os.getenv('VIRUSTOTAL_API_KEY')
 VT_API_URL = 'https://www.virustotal.com/api/v3/ip_addresses/'
 REQUEST_DELAY = 15  # Respect de la limite de 4 requêtes/minute
 THRESHOLD = 5  # Seuil d'activité suspecte ajusté
 PORTS_SUSPECTS = {22, 3389, 445, 80, 443}  # Ports souvent liés à des attaques
+
+
 
 # Vider le fichier JSON avant exécution
 def clear_existing_json(file_path):
@@ -37,6 +38,7 @@ def download_pcap_file(api_url, local_file):
         print(f"Erreur lors de la récupération des logs : {response.status_code}")
         return None
 
+
 # Fonction d'extraction des IPs et analyse des comportements suspects
 def extract_suspicious_ips(pcap_file):
     with pyshark.FileCapture(pcap_file, display_filter='ip', use_json=True) as cap:
@@ -47,7 +49,7 @@ def extract_suspicious_ips(pcap_file):
         ip_packets = defaultdict(int)
         ip_targets = defaultdict(set)
         ip_protocols = defaultdict(set)
-        ip_times = defaultdict(list)
+        ip_times = defaultdict(lambda: {'first_seen': None, 'last_seen': None})
         
         for packet in cap:
             try:
@@ -55,14 +57,18 @@ def extract_suspicious_ips(pcap_file):
                     src_ip = packet.ip.src
                     dst_ip = packet.ip.dst
                     timestamp = datetime.fromtimestamp(float(packet.sniff_time.timestamp()))
-                    formatted_time = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+                    
+                    # Mise à jour des timestamps de première et dernière activité
+                    if ip_times[src_ip]['first_seen'] is None or timestamp < ip_times[src_ip]['first_seen']:
+                        ip_times[src_ip]['first_seen'] = timestamp
+                    if ip_times[src_ip]['last_seen'] is None or timestamp > ip_times[src_ip]['last_seen']:
+                        ip_times[src_ip]['last_seen'] = timestamp
                     
                     ip_counter[src_ip] += 1
                     ip_counter[dst_ip] += 1
                     ip_packets[src_ip] += 1
                     ip_packets[dst_ip] += 1
                     ip_targets[src_ip].add(dst_ip)
-                    ip_times[src_ip].append(formatted_time)
                     
                     # Vérifier les ports utilisés
                     if hasattr(packet, 'tcp'):
@@ -102,6 +108,7 @@ def check_ip_virustotal(ip):
 pcap_file = download_pcap_file(PCAP_API_URL, LOCAL_PCAP_FILE)
 
 # Analyse des logs
+
 if pcap_file:
     suspect_ips, ip_packets, ip_targets, ip_protocols, external_ips, local_ips, ip_ports, ip_times = extract_suspicious_ips(pcap_file)
     analysis_results = []
@@ -130,7 +137,10 @@ if pcap_file:
             "connection_type": "Externe" if ip not in local_ips else "Interne",
             "classification": classification,
             "attacks": [],
-            "activity_times": ip_times.get(ip, [])
+            "activity_period": {
+                "first_seen": ip_times[ip]['first_seen'].strftime("%Y-%m-%d %H:%M:%S") if ip_times[ip]['first_seen'] else "N/A",
+                "last_seen": ip_times[ip]['last_seen'].strftime("%Y-%m-%d %H:%M:%S") if ip_times[ip]['last_seen'] else "N/A"
+            }
         }
         analysis_results.append(result)
         
