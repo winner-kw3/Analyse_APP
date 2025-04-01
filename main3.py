@@ -9,14 +9,32 @@ from collections import defaultdict
 load_dotenv()
 
 # Configuration
-
-PCAP_FILE = 'ex4.pcap'
+PCAP_API_URL = "http://93.127.203.48:5000/pcap/latest"  # URL de l'API
+LOCAL_PCAP_FILE = "logs.pcap"  # Nom du fichier local téléchargé
 OUTPUT_JSON = 'main.json'
 VIRUSTOTAL_API_KEY = os.getenv('VIRUSTOTAL_API_KEY')
 VT_API_URL = 'https://www.virustotal.com/api/v3/ip_addresses/'
 REQUEST_DELAY = 15  # Respect de la limite de 4 requêtes/minute
 THRESHOLD = 5  # Seuil d'activité suspecte ajusté
 PORTS_SUSPECTS = {22, 3389, 445, 80, 443}  # Ports souvent liés à des attaques
+
+# Vider le fichier JSON avant exécution
+def clear_existing_json(file_path):
+    with open(file_path, 'w') as f:
+        f.write("")  # Réécrit le fichier avec un contenu vide
+        print(f"Fichier '{file_path}' vidé avec succès.")
+
+# Fonction pour télécharger le fichier PCAP
+def download_pcap_file(api_url, local_file):
+    response = requests.get(api_url)
+    if response.status_code == 200:
+        with open(local_file, "wb") as f:
+            f.write(response.content)
+        print("Fichier PCAP récupéré avec succès !")
+        return local_file
+    else:
+        print(f"Erreur lors de la récupération des logs : {response.status_code}")
+        return None
 
 # Fonction d'extraction des IPs et analyse des comportements suspects
 def extract_suspicious_ips(pcap_file):
@@ -79,47 +97,52 @@ def check_ip_virustotal(ip):
         print(f"Erreur API pour {ip}: {response.status_code} - {response.text}")
     return None
 
-# Analyse des logs
-suspect_ips, ip_packets, ip_targets, ip_protocols, external_ips, local_ips, ip_ports = extract_suspicious_ips(PCAP_FILE)
-analysis_results = []
+# Vider le fichier JSON avant de générer un nouveau rapport
+clear_existing_json(OUTPUT_JSON)
 
-for ip in suspect_ips[:500]:  # Respect de la limite de 500 requêtes/jour
-    print(f"Analyse de l'IP : {ip}")
-    ip_data = check_ip_virustotal(ip)
-    
-    classification = "Securisee"
-    if ip in external_ips and external_ips[ip] > THRESHOLD // 2:
-        classification = "Suspecte"
-    if ip in ip_ports and ip_ports[ip] & PORTS_SUSPECTS:
-        classification = "Dangereuse"
-    
-    result = {
-        "ip": ip,
-        "last_analysis_stats": ip_data.get("last_analysis_stats", {}) if ip_data else {},
-        "reputation": ip_data.get("reputation", "N/A") if ip_data else "N/A",
-        "last_analysis_date": ip_data.get("last_analysis_date", "N/A") if ip_data else "N/A",
-        "country": ip_data.get("country", "Unknown") if ip_data else "Unknown",
-        "as_owner": ip_data.get("as_owner", "Unknown") if ip_data else "Unknown",
-        "tags": ip_data.get("tags", []) if ip_data else [],
-        "total_packets": ip_packets.get(ip, 0),
-        "targeted_machines": list(ip_targets.get(ip, [])),
-        "protocols_used": list(ip_protocols.get(ip, [])),
-        "connection_type": "Externe" if ip not in local_ips else "Interne",
-        "classification": classification,
-        "attacks": []  # Ajout des attaques si un pattern est détecté
+# Téléchargement et analyse des logs
+pcap_file = download_pcap_file(PCAP_API_URL, LOCAL_PCAP_FILE)
+if pcap_file:
+    suspect_ips, ip_packets, ip_targets, ip_protocols, external_ips, local_ips, ip_ports = extract_suspicious_ips(pcap_file)
+    analysis_results = []
+
+    for ip in suspect_ips[:500]:  # Respect de la limite de 500 requêtes/jour
+        print(f"Analyse de l'IP : {ip}")
+        ip_data = check_ip_virustotal(ip)
+        
+        classification = "Securisee"
+        if ip in external_ips and external_ips[ip] > THRESHOLD // 2:
+            classification = "Suspecte"
+        if ip in ip_ports and ip_ports[ip] & PORTS_SUSPECTS:
+            classification = "Dangereuse"
+        
+        result = {
+            "ip": ip,
+            "last_analysis_stats": ip_data.get("last_analysis_stats", {}) if ip_data else {},
+            "reputation": ip_data.get("reputation", "N/A") if ip_data else "N/A",
+            "last_analysis_date": ip_data.get("last_analysis_date", "N/A") if ip_data else "N/A",
+            "country": ip_data.get("country", "Unknown") if ip_data else "Unknown",
+            "as_owner": ip_data.get("as_owner", "Unknown") if ip_data else "Unknown",
+            "tags": ip_data.get("tags", []) if ip_data else [],
+            "total_packets": ip_packets.get(ip, 0),
+            "targeted_machines": list(ip_targets.get(ip, [])),
+            "protocols_used": list(ip_protocols.get(ip, [])),
+            "connection_type": "Externe" if ip not in local_ips else "Interne",
+            "classification": classification,
+            "attacks": []  # Ajout des attaques si un pattern est détecté
+        }
+        analysis_results.append(result)
+        
+        time.sleep(REQUEST_DELAY)
+
+    # Génération du rapport JSON
+    report = {
+        "total_ips_analyzed": len(suspect_ips),
+        "suspect_ips": suspect_ips,
+        "analysis_results": analysis_results
     }
-    analysis_results.append(result)
-    
-    time.sleep(REQUEST_DELAY)
 
-# Génération du rapport JSON
-report = {
-    "total_ips_analyzed": len(suspect_ips),
-    "suspect_ips": suspect_ips,
-    "analysis_results": analysis_results
-}
+    with open(OUTPUT_JSON, 'w') as f:
+        json.dump(report, f, indent=4)
 
-with open(OUTPUT_JSON, 'w') as f:
-    json.dump(report, f, indent=4)
-
-print("Analyse terminée. Rapport généré avec succès.")
+    print("Analyse terminée. Rapport généré avec succès !")

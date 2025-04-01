@@ -1,5 +1,6 @@
 import requests
 
+
 # URL de l'API
 url = "http://93.127.203.48:5000/pcap/latest"
 
