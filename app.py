@@ -103,7 +103,7 @@ pcap_file = download_pcap_file(PCAP_API_URL, LOCAL_PCAP_FILE)
 
 # Analyse des logs
 if pcap_file:
-    suspect_ips, ip_packets, ip_targets, ip_protocols, external_ips, local_ips, ip_ports, ip_times = extract_suspicious_ips(PCAP_FILE)
+    suspect_ips, ip_packets, ip_targets, ip_protocols, external_ips, local_ips, ip_ports, ip_times = extract_suspicious_ips(pcap_file)
     analysis_results = []
 
     for ip in suspect_ips[:500]:  # Respect de la limite de 500 requêtes/jour
