@@ -231,7 +231,7 @@ def display_page(n_home, n_graphs, n_analysis, n_settings, n_recap):
 def run_script(n_clicks):
     if n_clicks > 0:
         try:
-            result = subprocess.run(["python", "main.py"], capture_output=True, text=True)
+            result = subprocess.run(["python", "app.py"], capture_output=True, text=True)
             return html.Pre(result.stdout + result.stderr)
         except Exception as e:
             return html.Pre(str(e))
