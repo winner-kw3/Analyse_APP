@@ -8,7 +8,11 @@ from dash.dependencies import Input, Output
 import subprocess
 
 # Charger les données JSON
+<<<<<<< HEAD
 with open('data.json') as f:
+=======
+with open('main.json') as f:
+>>>>>>> a2d32620b4d0f913c2e11cb6c339e48e3b072367
     data = json.load(f)
 
 ips = []
