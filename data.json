@@ -24,12 +24,59 @@
                 "timeout": 0
             },
             "reputation": 0,
-            "last_analysis_date": 1743422206,
+            "last_analysis_date": "2025-03-31 11:56:46",
             "country": "Unknown",
             "as_owner": "Unknown",
             "tags": [
                 "private"
-            ]
+            ],
+            "total_packets": 3690,
+            "targeted_machines": [
+                "255.255.255.255",
+                "172.17.8.2",
+                "224.0.0.22",
+                "216.239.94.252",
+                "91.121.30.169",
+                "23.50.224.8",
+                "192.241.220.183",
+                "204.2.193.184",
+                "224.0.0.252",
+                "172.17.8.255",
+                "239.255.255.250"
+            ],
+            "protocols_used": [
+                "DATA",
+                "NTP",
+                "DRSUAPI",
+                "LSARPC",
+                "EPM",
+                "DNS",
+                "RPC_NETLOGON",
+                "IGMP",
+                "CLDAP",
+                "NBNS",
+                "MAILSLOT",
+                "DHCP",
+                "SMB",
+                "TLS",
+                "LDAP",
+                "HTTP",
+                "TCP",
+                "SSDP",
+                "TCP.SEGMENTS",
+                "SMB2",
+                "DATA-TEXT-LINES",
+                "LLMNR",
+                "KERBEROS",
+                "DCERPC"
+            ],
+            "connection_type": "Externe",
+            "classification": "Dangereuse",
+            "attacks": [],
+            "activity_period": {
+                "first_seen": "2019-01-28 22:44:14",
+                "last_seen": "2019-01-28 22:56:41"
+            }
         },
         {
             "ip": "172.17.8.255",
@@ -41,12 +88,25 @@
                 "timeout": 0
             },
             "reputation": 0,
-            "last_analysis_date": 1662795849,
+            "last_analysis_date": "2022-09-10 07:44:09",
             "country": "Unknown",
             "as_owner": "Unknown",
             "tags": [
                 "private"
-            ]
+            ],
+            "total_packets": 28,
+            "targeted_machines": [],
+            "protocols_used": [
+                "NBNS",
+                "MAILSLOT"
+            ],
+            "connection_type": "Externe",
+            "classification": "Securisee",
+            "attacks": [],
+            "activity_period": {
+                "first_seen": "N/A",
+                "last_seen": "N/A"
+            }
         },
         {
             "ip": "172.17.8.2",
@@ -58,12 +118,43 @@
                 "timeout": 0
             },
             "reputation": 0,
-            "last_analysis_date": 1737571479,
+            "last_analysis_date": "2025-01-22 18:44:39",
             "country": "Unknown",
             "as_owner": "Unknown",
             "tags": [
                 "private"
-            ]
+            ],
+            "total_packets": 869,
+            "targeted_machines": [
+                "172.17.8.109"
+            ],
+            "protocols_used": [
+                "DATA",
+                "NBNS",
+                "TCP",
+                "MAILSLOT",
+                "DCERPC",
+                "TCP.SEGMENTS",
+                "SMB2",
+                "RPC_NETLOGON",
+                "DHCP",
+                "LSARPC",
+                "SMB",
+                "NTP",
+                "KERBEROS",
+                "DRSUAPI",
+                "CLDAP",
+                "LDAP",
+                "EPM",
+                "DNS"
+            ],
+            "connection_type": "Externe",
+            "classification": "Suspecte",
+            "attacks": [],
+            "activity_period": {
+                "first_seen": "2019-01-28 22:44:14",
+                "last_seen": "2019-01-28 22:55:51"
+            }
         },
         {
             "ip": "224.0.0.22",
@@ -75,12 +166,24 @@
                 "timeout": 0
             },
             "reputation": -41,
-            "last_analysis_date": 1743426910,
+            "last_analysis_date": "2025-04-01 13:24:32",
             "country": "Unknown",
             "as_owner": "Unknown",
             "tags": [
                 "multicast"
-            ]
+            ],
+            "total_packets": 8,
+            "targeted_machines": [],
+            "protocols_used": [
+                "IGMP"
+            ],
+            "connection_type": "Externe",
+            "classification": "Securisee",
+            "attacks": [],
+            "activity_period": {
+                "first_seen": "N/A",
+                "last_seen": "N/A"
+            }
         },
         {
             "ip": "224.0.0.252",
@@ -91,14 +194,26 @@
                 "harmless": 62,
                 "timeout": 0
             },
-            "reputation": -51,
-            "last_analysis_date": 1743394663,
+            "reputation": -50,
+            "last_analysis_date": "2025-04-01 03:22:20",
             "country": "Unknown",
             "as_owner": "Unknown",
             "tags": [
                 "suspicious-udp",
                 "multicast"
-            ]
+            ],
+            "total_packets": 8,
+            "targeted_machines": [],
+            "protocols_used": [
+                "LLMNR"
+            ],
+            "connection_type": "Externe",
+            "classification": "Securisee",
+            "attacks": [],
+            "activity_period": {
+                "first_seen": "N/A",
+                "last_seen": "N/A"
+            }
         },
         {
             "ip": "23.50.224.8",
@@ -110,10 +225,26 @@
                 "timeout": 0
             },
             "reputation": 0,
-            "last_analysis_date": 1743423326,
+            "last_analysis_date": "2025-03-31 13:50:04",
             "country": "US",
             "as_owner": "Akamai International B.V.",
-            "tags": []
+            "tags": [],
+            "total_packets": 9,
+            "targeted_machines": [
+                "172.17.8.109"
+            ],
+            "protocols_used": [
+                "HTTP",
+                "TCP",
+                "DATA-TEXT-LINES"
+            ],
+            "connection_type": "Externe",
+            "classification": "Suspecte",
+            "attacks": [],
+            "activity_period": {
+                "first_seen": "2019-01-28 22:44:19",
+                "last_seen": "2019-01-28 22:44:19"
+            }
         },
         {
             "ip": "239.255.255.250",
@@ -125,12 +256,24 @@
                 "timeout": 0
             },
             "reputation": -145,
-            "last_analysis_date": 1743426017,
+            "last_analysis_date": "2025-04-01 13:00:49",
             "country": "Unknown",
             "as_owner": "Unknown",
             "tags": [
                 "multicast"
-            ]
+            ],
+            "total_packets": 6,
+            "targeted_machines": [],
+            "protocols_used": [
+                "SSDP"
+            ],
+            "connection_type": "Externe",
+            "classification": "Securisee",
+            "attacks": [],
+            "activity_period": {
+                "first_seen": "N/A",
+                "last_seen": "N/A"
+            }
         },
         {
             "ip": "91.121.30.169",
@@ -142,10 +285,26 @@
                 "timeout": 0
             },
             "reputation": 0,
-            "last_analysis_date": 1743423326,
+            "last_analysis_date": "2025-03-31 13:50:04",
             "country": "FR",
             "as_owner": "OVH SAS",
-            "tags": []
+            "tags": [],
+            "total_packets": 187,
+            "targeted_machines": [
+                "172.17.8.109"
+            ],
+            "protocols_used": [
+                "HTTP",
+                "TCP",
+                "TCP.SEGMENTS"
+            ],
+            "connection_type": "Externe",
+            "classification": "Suspecte",
+            "attacks": [],
+            "activity_period": {
+                "first_seen": "2019-01-28 22:49:17",
+                "last_seen": "2019-01-28 22:49:18"
+            }
         },
         {
             "ip": "192.241.220.183",
@@ -157,10 +316,26 @@
                 "timeout": 0
             },
             "reputation": -4,
-            "last_analysis_date": 1743425689,
+            "last_analysis_date": "2025-03-31 13:50:04",
             "country": "US",
             "as_owner": "DIGITALOCEAN-ASN",
-            "tags": []
+            "tags": [],
+            "total_packets": 846,
+            "targeted_machines": [
+                "172.17.8.109"
+            ],
+            "protocols_used": [
+                "TLS",
+                "TCP",
+                "TCP.SEGMENTS"
+            ],
+            "connection_type": "Externe",
+            "classification": "Suspecte",
+            "attacks": [],
+            "activity_period": {
+                "first_seen": "2019-01-28 22:52:02",
+                "last_seen": "2019-01-28 22:52:14"
+            }
         },
         {
             "ip": "204.2.193.184",
@@ -172,10 +347,25 @@
                 "timeout": 0
             },
             "reputation": 0,
-            "last_analysis_date": 1743423326,
+            "last_analysis_date": "2025-03-31 13:50:04",
             "country": "US",
             "as_owner": "NTT-DATA-2914",
-            "tags": []
+            "tags": [],
+            "total_packets": 9,
+            "targeted_machines": [
+                "172.17.8.109"
+            ],
+            "protocols_used": [
+                "HTTP",
+                "TCP"
+            ],
+            "connection_type": "Externe",
+            "classification": "Suspecte",
+            "attacks": [],
+            "activity_period": {
+                "first_seen": "2019-01-28 22:52:03",
+                "last_seen": "2019-01-28 22:52:03"
+            }
         },
         {
             "ip": "216.239.94.252",
@@ -187,10 +377,27 @@
                 "timeout": 0
             },
             "reputation": 0,
-            "last_analysis_date": 1743423326,
+            "last_analysis_date": "2025-03-31 13:50:04",
             "country": "CA",
             "as_owner": "CONCORDE",
-            "tags": []
+            "tags": [],
+            "total_packets": 1717,
+            "targeted_machines": [
+                "172.17.8.109"
+            ],
+            "protocols_used": [
+                "DATA",
+                "TLS",
+                "TCP",
+                "TCP.SEGMENTS"
+            ],
+            "connection_type": "Externe",
+            "classification": "Suspecte",
+            "attacks": [],
+            "activity_period": {
+                "first_seen": "2019-01-28 22:55:51",
+                "last_seen": "2019-01-28 22:56:41"
+            }
         }
     ]
 }

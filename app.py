@@ -12,6 +12,7 @@ load_dotenv()
 # Configuration
 PCAP_API_URL = "http://93.127.203.48:5000/pcap/latest"  # URL de l'API
 LOCAL_PCAP_FILE = "logs.pcap"
+OUTPUT_JSON = 'main.json'
 VIRUSTOTAL_API_KEY = os.getenv('VIRUSTOTAL_API_KEY')
 VT_API_URL = 'https://www.virustotal.com/api/v3/ip_addresses/'
 REQUEST_DELAY = 15  # Respect de la limite de 4 requêtes/minute
